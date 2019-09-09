@@ -1,0 +1,12 @@
+{
+    "API_KEY": "",
+    "API_SECRET": "",
+    "API_KEY_HIST": "",
+    "API_SECRET_HIST": "",
+    "API_KEY_TIMELINE": "",
+    "API_SECRET_TIMELINE": "",
+    "LATITUDE": 1,
+    "LONGITUDE": 1,
+    "MAX_RANGE": 0,
+    "LIMIT_DATE": "2019-08-30"
+}
