@@ -19,18 +19,28 @@ api = tweepy.API(
     wait_on_rate_limit_notify=True
 )
 
-LAST_ID = None
-RESULTS_GEO = 0
-RESULT_ALL = 0
-FLAG_FILTER = ''  # '-filter:retweets'
 
-data_output = open("DATA.json", "a")
+def get_last_id(url_path):
+    '''
+    Pega o id do último tweet
+    '''
+    tmp = None
+    for index in open(url_path, "r"):
+        tmp = json.loads(index)['id']
+    return tmp
 
-# Pega o id do último tweet.
-for index in open("DATA.json", "r"):
-    LAST_ID = json.loads(index)["id"]
 
 while True:
+
+    # Configurações gerais
+    URL_PATH = "DATA.json"
+    RESULTS_GEO = 0
+    RESULT_ALL = 0
+    RESULT_TWEETS = 0
+    DATA_OUTPUT = open(URL_PATH, "a")
+    LAST_ID = get_last_id(URL_PATH)
+    FLAG_FILTER = ''  # '-filter:retweets'
+
     try:
         # q='' + FLAG_FILTER, #parâmetro opcional
         for tweet in api.search(geocode="%f,%f,%dkm" %
@@ -52,7 +62,7 @@ while True:
                       tweet.user.screen_name)
                 print(" Maps: https://maps.google.com/?q=%s,%s" % (lat, long))
 
-                data_output.write(str(json.dumps(tweet._json)) + "\n")
+                DATA_OUTPUT.write(str(json.dumps(tweet._json)) + "\n")
 
                 print(
                     " Percorridos >>  [\x1b[31m%d\x1b[0m] Tweets..." % RESULT_ALL)

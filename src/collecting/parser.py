@@ -1,68 +1,32 @@
 import time
 import csv
 import json
+import sys
+import pandas as pd
 
 #  Para para o parser do datetime TWT
 #  https://stackoverflow.com/questions/7703865/going-from-twitter-date-to-python-datetime-date
 #  https://stackabuse.com/how-to-format-dates-in-python/
 
-data_output_csv = csv.writer(open("DATA_FINAL.csv", 'w'))
 data_output_json = open("DATA_FINAL.json", 'w')
 
-data_output_csv.writerow((
-    'tweet_id',
-    'screen_name',
-    'location',
-    'status_count',
-    'followers_count',
-    'friends_count',
-    'lang',
-    'text',
-    'date',
-    'time',
-    'favourite_count',
-    'hashtags',
-    'source_device',
-    'latitude',
-    'longitude'
-))
+if __name__ == "__main__":
+    for tweet in open(sys.argv[1], "r"):
 
-for tweet in open("DATA.json", "r"):
+        item = json.loads(tweet)
+        # pegando todas as hashtags sem o caractere '#'
+        hashtags = (
+            hash_word['text']
+            for hash_word in item['entities']['hashtags']
+        )
+        lat, long = item['geo']['coordinates']
+        # formatando date e time
+        tweet_date, tweet_time = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(
+            item['created_at'], '%a %b %d %H:%M:%S +0000 %Y'
+        )).split(' ')
 
-    item = json.loads(tweet)
-
-    hashtags = (hash_word['text']
-                for hash_word in item['entities']['hashtags']
-                )
-
-    lat, long = item['geo']['coordinates']
-
-    # formatando date e time
-    tweet_date, tweet_time = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(
-        item['created_at'], '%a %b %d %H:%M:%S +0000 %Y'
-    )).split(' ')
-
-    data_output_csv.writerow([
-        item['user']['id_str'],
-        item['user']['screen_name'],
-        item['user']['location'],
-        item['user']['statuses_count'],
-        item['user']['followers_count'],
-        item['user']['friends_count'],
-        item['lang'],
-        item['full_text'].replace('\n', ''),
-        tweet_date,
-        tweet_time,
-        item['favorite_count'],
-        ' '.join(hashtags),
-        item['source'],
-        lat,
-        long
-    ])
-
-    data_output_json.write(
-        str(
-            json.dumps({
+        data_output_json.write(
+            str(json.dumps({
                 'tweet_id': item['user']['id_str'],
                 'screen_name': item['user']['screen_name'],
                 'location': item['user']['location'],
@@ -78,6 +42,8 @@ for tweet in open("DATA.json", "r"):
                 'source_device': item['source'],
                 'latitude': lat,
                 'longitude': long
-            })
-        ) + '\n'
-    )
+            })) + '\n'
+        )
+    data_output_json.close()
+    dataframe_json = pd.read_json("DATA_FINAL.json", lines=True)
+    dataframe_json.to_csv("DATA_FINAL.csv", index=None)

@@ -1,7 +1,6 @@
 import tweepy
 import json
 import time
-import os
 
 # carregando arquivos de variáveis globais
 ENVS_KEYS = json.loads(
@@ -33,9 +32,10 @@ def get_last_id(url_path):
     '''
     Pega o id do último tweet
     '''
+    tmp = None
     for index in open(url_path, "r"):
-        tmp = json.loads(index)
-    return tmp["id"]
+        tmp = json.loads(index)['id']
+    return tmp
 
 
 def write_user_on_disk(user):
