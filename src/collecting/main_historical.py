@@ -28,23 +28,22 @@ API_HIST_TIMELINE = tweepy.API(
 )
 
 
-def get_last_id(url_path):
-    '''
-    Pega o id do último tweet
-    '''
-    tmp = None
-    for index in open(url_path, "r"):
-        tmp = json.loads(index)['id']
-    return tmp
-
-
 def write_user_on_disk(user):
     '''
     Grava os nomes de usuários em um arquivo em disco
     '''
+    '''
     USER_NOT_MINE = open("USER_NOT_MINE.txt", "a")
     USER_NOT_MINE.write(user + "\n")
     USER_NOT_MINE.close()
+    '''
+    USER_NOT_MINE = open('USER_NOT_MINE.json', 'a')
+    USER_NOT_MINE.write(
+        str(json.dumps({
+            'user': user.user.screen_name,
+            'id': user.id
+        })) + '\n'
+    )
 
 
 if __name__ == "__main__":
@@ -55,7 +54,14 @@ if __name__ == "__main__":
     RESULT_ALL = 0
     RESULT_TWEETS = 0
     DATA_OUTPUT = open(URL_PATH, "a")
-    LAST_ID = get_last_id(URL_PATH)
+
+    try:
+        LAST_ID = list(reversed(
+            [json.loads(x)['id']
+             for x in open('USER_NOT_MINE.json', 'r')])
+        )[0]
+    except:
+        LAST_ID = None
 
     while True:
         try:
@@ -69,23 +75,23 @@ if __name__ == "__main__":
                                          max_id=LAST_ID
                                          ):
                 RESULT_ALL += 1
-
                 if tweet.geo:
-
                     username = tweet.user.screen_name
 
                     try:
-                        if username in (x.replace('\n', '') for x in open('USER_NOT_MINE.txt', 'r')):
+
+                        # if username in (x.replace('\n', '') for x in open('USER_NOT_MINE.txt', 'r')):
+                        if username in set(list([json.loads(x)['user'] for x in open('USER_NOT_MINE.json', 'r')])):
                             print(
-                                "\n[❌ ]- - - - -[\x1b[46m %s \x1b[0m]- - - - -" % username)
+                                "\n[❌]- - - - -[\x1b[46m %s \x1b[0m]- - - - -" % username)
                             continue
                         else:
-                            write_user_on_disk(username)
+                            write_user_on_disk(tweet)
                     except:
-                        write_user_on_disk(username)
+                        write_user_on_disk(tweet)
 
-                    print(
-                        "\n[✅ ]- - - - -[\x1b[46m %s \x1b[0m]- - - - -" % username)
+                    print("\n[✔️ ]- - - - -[\x1b[46m %s \x1b[0m] - [\x1b[46m %s \x1b[0m]" %
+                          (username, tweet.created_at))
 
                     for user_timeline in tweepy.Cursor(API_HIST_TIMELINE.user_timeline, screen_name='@'+str(username), tweet_mode="extended").items():
                         # gravando json no arquivo

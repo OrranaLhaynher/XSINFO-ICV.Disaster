@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
         data_output_json.write(
             str(json.dumps({
-                'tweet_id': item['user']['id_str'],
+                'user_id': item['user']['id_str'],
                 'screen_name': item['user']['screen_name'],
                 'location': item['user']['location'],
                 'status_count': item['user']['statuses_count'],

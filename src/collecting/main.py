@@ -54,7 +54,7 @@ while True:
                                 tweet_mode='extended'):
             if tweet.geo:
 
-                print("\n[✅ ]- - - - - - - - - - - - - - - - - - - - - -")
+                print("\n[✔️ ]- - - - - - - - - - - - - - - - - - - - - -")
                 lat, long = tweet.geo['coordinates']
                 print(" User: ", tweet.user.screen_name)
                 print(" Data: ", tweet.created_at)
