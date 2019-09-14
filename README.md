@@ -1,9 +1,13 @@
 ### 🌋 Minicurso X SINFO. by - ICV.Disaster
 
 **Arquivos utilizados no minicurso Minicurso de Análise de Dados de Mídias Sociais.**
-```
-Arquvios de Coleta, Limpeza, Exploração e Simulação.
-```
+
+<p align="center">
+  <img src="statics/gif/ExcellentBackDromaeosaur-size_restricted.gif">
+</p>
+    
+    Arquivos de Coleta, Limpeza, Exploração e Simulação.
+
 
 **Contribuidores**
 <table>
