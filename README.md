@@ -4,11 +4,18 @@
 ```
 Arquvios de Coleta, Limpeza, Exploração e Simulação.
 ```
+
+**Contribuidores**
 <table>
-  <tr>
-    <td align="center"><a href="https://kentcdodds.com"><img src="statics/Avatars/mateus.jpeg" width="100px;" alt="Kent C. Dodds"/><br /><sub><b>Kent C. Dodds</b></sub></a><br /><a href="#question-kentcdodds" title="Answering Questions">💬</a> <a href="https://github.com/all-contributors/all-contributors/commits?author=kentcdodds" title="Documentation">📖</a> <a href="#review-kentcdodds" title="Reviewed Pull Requests">👀</a> <a href="#talk-kentcdodds" title="Talks">📢</a></td>
-    <td align="center"><a href="https://github.com/jfmengels"><img src="statics/Avatars/deborah.jpeg" width="100px;" alt="Jeroen Engels"/><br /><sub><b>Jeroen Engels</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors/commits?author=jfmengels" title="Documentation">📖</a> <a href="#review-jfmengels" title="Reviewed Pull Requests">👀</a> <a href="#tool-jfmengels" title="Tools">🔧</a></td>
-    <td align="center"><a href="https://jakebolam.com"><img src="statics/Avatars/carol.jpeg" width="100px;" alt="Jake Bolam"/><br /><sub><b>Jake Bolam</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors/commits?author=jakebolam" title="Documentation">📖</a> <a href="#tool-jakebolam" title="Tools">🔧</a> <a href="#infra-jakebolam" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-jakebolam" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://github.com/tbenning"><img src="statics/Avatars/orrana.jpeg" width="100px;" alt="tbenning"/><br /><sub><b>tbenning</b></sub></a><br /><a href="#design-tbenning" title="Design">🎨</a> <a href="#maintenance-tbenning" title="Maintenance">🚧</a></td>
-  </tr>
- </table>
+<tr>
+<td align="center"><a href="https://github.com/deborahvm"><img src="statics/Avatars/deborah.jpeg" width="200px;" alt="Deborah Maria"/><br /><sub><b>@deborahvm</b></sub></a><br /><a href="#" title="Ideas">🤔</a> <a href="#" title="Review">👀</a> <a href="#" title="Doc">📖</a></td>
+  
+<td align="center"><a href="https://github.com/mpgxc"><img src="statics/Avatars/mateus.jpeg" width="200px;" alt="Mateus Garcia"/><br /><sub><b>@mpgxc</b></sub></a><br/> <a href="https://github.com/mpgxc/XSINFO-ICV.Disaster/commits?author=mpgxc" title="Code">💻</a> <a href="#" title="Talk">📢</a> <a href="#" title="Teste">⚠️</a> <a href="#" title="Doc">📖</a> <a href="https://github.com/mpgxc/XSINFO-ICV.Disaster/tree/master/Mining%20Scripts/collecting" title="Examples">💡</a> </td>
+
+<td align="center"><a href="https://github.com/XAnakar"><img src="statics/Avatars/carol.jpeg" width="200px;" alt="Caroline"/><br /><sub><b>@xanakar</b></sub></a><br /><a href="#" title="Talk">📢</a> <a href="#" title="Doc">📖</a></td> 
+
+<td align="center"><a href="https://github.com/OrranaLhaynher"><img src="statics/Avatars/orrana.jpeg" width="200px;" alt="Orrana"/><br /><sub><b>@OrranaLhaynher</b></sub></a><br /><a href="https://github.com/mpgxc/XSINFO-ICV.Disaster/commits?author=OrranaLhaynher"  title="Code">💻</a> <a href="#" title="Talk">📢</a> <a href="#" title="Doc">📖</a> <a href="#" title="Examples">💡</a> </td>
+</tr>
+</table>
+
+
