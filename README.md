@@ -1,4 +1,4 @@
-### XSINFO-ICV.Disaster
+### 🌋 Minicurso X SINFO. by - ICV.Disaster
 
 **Arquivos utilizados no minicurso Minicurso de Análise de Dados de Mídias Sociais.**
 ```
