@@ -29,14 +29,7 @@ API_HIST_TIMELINE = tweepy.API(
 
 
 def write_user_on_disk(user):
-    '''
-    Grava os nomes de usuários em um arquivo em disco
-    '''
-    '''
-    USER_NOT_MINE = open("USER_NOT_MINE.txt", "a")
-    USER_NOT_MINE.write(user + "\n")
-    USER_NOT_MINE.close()
-    '''
+
     USER_NOT_MINE = open('USER_NOT_MINE.json', 'a')
     USER_NOT_MINE.write(
         str(json.dumps({
@@ -44,6 +37,16 @@ def write_user_on_disk(user):
             'id': user.id
         })) + '\n'
     )
+
+
+def get_last_id(url_path):
+    ''' Pega o id do último tweet '''
+    try:
+        return list(reversed(
+            [json.loads(x)['id'] for x in open(url_path, 'r')]
+        ))[0]
+    except:
+        return None
 
 
 if __name__ == "__main__":
@@ -54,14 +57,7 @@ if __name__ == "__main__":
     RESULT_ALL = 0
     RESULT_TWEETS = 0
     DATA_OUTPUT = open(URL_PATH, "a")
-
-    try:
-        LAST_ID = list(reversed(
-            [json.loads(x)['id']
-             for x in open('USER_NOT_MINE.json', 'r')])
-        )[0]
-    except:
-        LAST_ID = None
+    LAST_ID = get_last_id(URL_PATH)
 
     while True:
         try:
